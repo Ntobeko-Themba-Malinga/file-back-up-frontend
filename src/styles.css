@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --x-small-padding: 0.1rem;
+    --small-padding: 1rem;
+    --standard-padding: 2rem;
+    --large-paddng: 4rem;
+    --icon-colour: rgb(16, 196, 16);
+    --secondary-icon-colour: rgb(0, 238, 255);
+    --text-colour: #fff;
+    --secondary-text-colour: #c2c2c2;
+    --bg-colour: #333;
+    --bg-colour-dark: #131313;
+    --border-radius: 0.4rem;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+}
+
+app-root {
+    height: 100vh;
+}

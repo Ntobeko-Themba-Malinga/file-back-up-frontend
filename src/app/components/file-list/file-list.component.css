@@ -1,0 +1,11 @@
+table {
+    background-color: var(--bg-colour-dark);
+}
+
+th {
+    color: var(--text-colour);
+}
+
+td {
+    color: var(--secondary-text-colour);;
+}

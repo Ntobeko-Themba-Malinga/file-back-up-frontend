@@ -1,0 +1,51 @@
+#homepage {
+    display: flex;
+    color: var(--text-colour);
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+#navbar {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding-inline: var(--standard-padding);
+    align-items: center;
+}
+
+#navbar #logo {
+    display: flex;
+    align-items: center;
+    gap: var(--small-padding);
+    font-size: xx-large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#logo mat-icon {
+    font-size: x-large;
+    color: var(--icon-colour);
+}
+
+#dark-logo-text {
+    color: black;
+}
+
+#file-content {
+    flex: 4;
+    display: flex;
+    flex-direction: row;
+}
+
+#table-section {
+    background-color: var(--bg-colour-dark);
+    border-radius: var(--border-radius);
+    padding: var(--small-padding);
+    flex: 1;
+    margin-inline: var(--x-small-padding);
+    margin-block: var(--small-padding);
+}
+
+#upload-button {
+    background-color: var(--secondary-icon-colour);
+}
