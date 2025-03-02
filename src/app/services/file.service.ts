@@ -17,4 +17,8 @@ export class FileService {
   saveFile(file: FormData): Observable<void> {
     return this.http.post<void>(this.baseUrl, file);
   }
+
+  deleteFileById(fileId: number) {
+    return this.http.delete<void>(`${this.baseUrl}/${fileId}`);
+  }
 }

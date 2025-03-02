@@ -5,6 +5,7 @@ import { File } from '../../model/file.type';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-file-list',
@@ -14,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatProgressBarModule,
     MatButtonModule,
     MatIconModule,
+    MatMenuModule,
   ],
   templateUrl: './file-list.component.html',
   styleUrl: './file-list.component.css'
@@ -44,5 +46,23 @@ export class FileListComponent implements OnInit {
         console.log("LOL things went sideways, try reloading page");
       }
     })
+  }
+
+  removeFile(file: File) {
+    this.files.set(this.files()?.filter(
+      (displayFile) => displayFile.fileId !== file.fileId
+    ));
+  }
+
+  deleteFile(file: File) {
+    this.fileService.deleteFileById(file.fileId)
+    .subscribe({
+      next: (_res) => {
+        this.removeFile(file);
+      },
+      error: (err) => {
+        console.log("Lol something went wrong. Try reloading the page");
+      }
+    });
   }
 }
