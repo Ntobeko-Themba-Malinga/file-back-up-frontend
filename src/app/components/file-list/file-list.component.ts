@@ -65,4 +65,21 @@ export class FileListComponent implements OnInit {
       }
     });
   }
+
+  downloadFile(file: File) {
+    this.fileService.downloadFile(file.fileId)
+    .subscribe({
+      next: (res) => {
+        let blob: Blob = res.body as Blob;
+        const link = document.createElement('a');
+        const objectUrl = URL.createObjectURL(blob);
+        link.href = objectUrl;
+        link.download = file.fileName;
+        link.click();
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+  }
 }

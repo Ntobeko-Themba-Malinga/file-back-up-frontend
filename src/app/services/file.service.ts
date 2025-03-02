@@ -21,4 +21,8 @@ export class FileService {
   deleteFileById(fileId: number) {
     return this.http.delete<void>(`${this.baseUrl}/${fileId}`);
   }
+
+  downloadFile(fileId: number) {
+    return this.http.get(`${this.baseUrl}/${fileId}`, { observe: 'response', responseType: 'blob' })
+  }
 }
