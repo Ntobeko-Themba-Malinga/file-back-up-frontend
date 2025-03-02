@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Upload file</h2>
+<mat-dialog-content>
+    <input type="file" (change)="onFileChange($event)" />
+</mat-dialog-content>
+<mat-dialog-actions> 
+  <button mat-button (click)="dialogRef.close({ fileSaved: false })">Close</button>
+  <button mat-button cdkFocusInitial (click)="onSubmit()">Submit</button>
+</mat-dialog-actions>

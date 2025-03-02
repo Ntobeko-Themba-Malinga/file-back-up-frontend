@@ -44,6 +44,7 @@
     flex: 1;
     margin-inline: var(--x-small-padding);
     margin-block: var(--small-padding);
+    overflow-y: auto;
 }
 
 #upload-button {

@@ -13,4 +13,8 @@ export class FileService {
   getAllFiles(): Observable<File[]> {
     return this.http.get<File[]>(this.baseUrl);
   }
+
+  saveFile(file: FormData): Observable<void> {
+    return this.http.post<void>(this.baseUrl, file);
+  }
 }
