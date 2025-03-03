@@ -14,6 +14,10 @@ export class FileService {
     return this.http.get<File[]>(this.baseUrl);
   }
 
+  searchForFiles(text: string): Observable<File[]> {
+    return this.http.get<File[]>(`${this.baseUrl}?filename=${text}`);
+  }
+
   saveFile(file: FormData): Observable<void> {
     return this.http.post<void>(this.baseUrl, file);
   }

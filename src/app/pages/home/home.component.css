@@ -12,6 +12,7 @@
     flex: 1;
     padding-inline: var(--standard-padding);
     align-items: center;
+    justify-content: flex-start;
 }
 
 #navbar #logo {
@@ -34,7 +35,7 @@
 #file-content {
     flex: 4;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 #table-section {
@@ -49,4 +50,10 @@
 
 #upload-button {
     background-color: var(--secondary-icon-colour);
+}
+
+#search-bar {
+    align-self: center;
+    justify-self: center;
+    margin-block-start: var(--standard-padding);
 }

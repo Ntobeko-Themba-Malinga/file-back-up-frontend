@@ -9,9 +9,10 @@
         </button>
     </section>
     <section id="file-content">
+        <app-file-search (searchText)="searchText.set($event)" id="search-bar" />
         <section id="table-section">
             <h2>Welcome to FileBackup</h2>
-            <app-file-list />
+            <app-file-list [searchText]="searchText()" />
         </section>
     </section>
 </section>

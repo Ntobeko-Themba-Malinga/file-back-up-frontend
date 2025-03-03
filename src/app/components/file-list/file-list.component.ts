@@ -1,4 +1,4 @@
-import { Component, effect, inject, OnInit, signal } from '@angular/core';
+import { Component, effect, inject, input, OnChanges, OnInit, signal, SimpleChanges } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { FileService } from '../../services/file.service';
 import { File } from '../../model/file.type';
@@ -20,9 +20,10 @@ import { MatMenuModule } from '@angular/material/menu';
   templateUrl: './file-list.component.html',
   styleUrl: './file-list.component.css'
 })
-export class FileListComponent implements OnInit {
+export class FileListComponent implements OnInit, OnChanges {
   fileService = inject(FileService);
   files = signal<File[] | undefined>(undefined);
+  searchText = input<string>();
   fileDataSource: MatTableDataSource<File> = new MatTableDataSource<File>();
   fileDisplayColumns = ["fileName", "fileType", "button"];
 
@@ -34,6 +35,29 @@ export class FileListComponent implements OnInit {
 
   ngOnInit(): void {
       this.loadFiles();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.searchForFile(this.searchText());
+  }
+
+  searchForFile(text: string | undefined) {
+    if (this.searchText() !== undefined && this.searchText()?.length !== 0) {
+      this.files.set(undefined);
+      this.fileService.searchForFiles(text as string)
+      .subscribe({
+        next: (res) => {
+          this.files.set(res);
+        },
+        error: (_err) => {
+          this.files.set([]);
+        }
+      });
+    } else if (this.searchText() !== undefined && this.searchText()?.length === 0) {
+      this.loadFiles();
+    } else {
+      
+    }
   }
 
   loadFiles() {
